@@ -89,7 +89,7 @@ body {
     /* Fondo con imagen */
     background-image: 
         linear-gradient(rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.7)), /* capa de oscurecimiento */
-        url('/images/fondo1.jpg'); /* ruta de la imagen */
+        url('./images/fondo1.jpg'); /* ruta de la imagen */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -630,4 +630,5 @@ body {
 /* ===== SCROLL SUAVE ===== */
 html {
     scroll-behavior: smooth;
+
 }
