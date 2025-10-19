@@ -177,7 +177,7 @@ function crearTarjetaProducto(producto) {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.innerHTML = `
-        <img src="../images/${producto.imagen}" alt="${producto.nombre}" class="product-image">
+        <img src="./images/${producto.imagen}" alt="${producto.nombre}" class="product-image">
         <h3 class="product-name">${producto.nombre}</h3>
         <p class="product-price">${producto.precio.toFixed(2)}</p>
     `;
@@ -217,7 +217,7 @@ function actualizarBotonesPagina() {
  * Abre el modal con información del producto
  */
 function abrirModalProducto(producto) {
-    modalProductImage.src = `../images/${producto.imagen}`;
+    modalProductImage.src = `./images/${producto.imagen}`;
     modalProductImage.alt = producto.nombre;
     modalProductName.textContent = producto.nombre;
     modalProductPrice.textContent = `${producto.precio.toFixed(2)}`;
