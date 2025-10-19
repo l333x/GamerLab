@@ -6,7 +6,7 @@ const productos = [
     id: 1,
     nombre: "Teclado Mecánico RGB Pro",
     categoria: "teclado",
-    imagen: "teclado1.png",
+    imagen: "./images/teclado1.png",
     precio: 129.99,
     cuotas: [3, 6, 9, 12, 18],
     descripcion: "Teclado mecánico con switches Cherry MX, RGB personalizable, diseño ergonómico."
@@ -15,7 +15,7 @@ const productos = [
     id: 2,
     nombre: "Teclado Gamer Wireless",
     categoria: "teclado",
-    imagen: "teclado2.png",
+    imagen: "./images/teclado2.png",
     precio: 89.99,
     cuotas: [3, 6, 9, 12, 18],
     descripcion: "Teclado inalámbrico, batería de 40 horas, retroiluminación LED."
@@ -24,7 +24,7 @@ const productos = [
     id: 3,
     nombre: "Monitor Gaming 27'' 144Hz",
     categoria: "monitor",
-    imagen: "monitor1.png",
+    imagen: "./images/monitor1.png",
     precio: 349.99,
     cuotas: [9, 12],
     descripcion: "Monitor curvo 27 pulgadas, 144Hz, 1ms respuesta, panel VA."
@@ -33,7 +33,7 @@ const productos = [
     id: 4,
     nombre: "Monitor 4K UHD 32''",
     categoria: "monitor",
-    imagen: "monitor2.png",
+    imagen: "./images/monitor2.png",
     precio: 549.99,
     cuotas: [9, 12],
     descripcion: "Monitor 4K, HDR10, IPS, ideal para diseño y gaming."
@@ -42,7 +42,7 @@ const productos = [
     id: 5,
     nombre: "PC Gamer RTX 4060",
     categoria: "pc",
-    imagen: "pc1.png",
+    imagen: "./images/pc1.png",
     precio: 1299.99,
     cuotas: [6, 9, 12],
     descripcion: "PC completa: RTX 4060, Ryzen 5 7600, 16GB RAM, SSD 1TB."
@@ -51,7 +51,7 @@ const productos = [
     id: 6,
     nombre: "PC Workstation i9",
     categoria: "pc",
-    imagen: "pc2.png",
+    imagen: "./images/pc2.png",
     precio: 2199.99,
     cuotas: [6, 9, 12],
     descripcion: "Estación de trabajo: Intel i9, 32GB RAM, RTX 4070, SSD 2TB."
@@ -332,4 +332,5 @@ document.addEventListener('DOMContentLoaded', () => {
   
   console.log('Cotizador Inteligente - Gamer Lab');
   console.log('Sistema listo para calcular financiamientos');
+
 });
