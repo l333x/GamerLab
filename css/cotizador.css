@@ -1,0 +1,523 @@
+/* ===================================
+   ESTILOS GLOBALES
+=================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================
+   HEADER
+=================================== */
+.header {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00f0ff, #a020f0);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #00f0ff;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ===================================
+   HERO / TÍTULO PRINCIPAL
+=================================== */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    animation: fadeIn 1s ease;
+}
+
+.title {
+    font-size: 48px;
+    background: linear-gradient(90deg, #00f0ff, #a020f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #b0b0b0;
+}
+
+/* ===================================
+   SELECTOR DE PRODUCTOS
+=================================== */
+.selector-section {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.selector-label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #00f0ff;
+}
+
+.producto-selector {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 20px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.producto-selector:hover {
+    border-color: #00f0ff;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.producto-selector option {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+/* ===================================
+   INFORMACIÓN DEL PRODUCTO
+=================================== */
+.producto-info {
+    padding: 40px 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.producto-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.producto-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.producto-imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.producto-imagen img:hover {
+    transform: scale(1.05);
+}
+
+.producto-detalles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#producto-nombre {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #00f0ff;
+}
+
+#producto-descripcion {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-bottom: 30px;
+}
+
+.precio-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.precio-display label {
+    font-size: 18px;
+    color: #00f0ff;
+}
+
+.precio-valor {
+    padding: 15px 20px;
+    font-size: 32px;
+    font-weight: bold;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(160, 32, 240, 0.2));
+    border: 2px solid rgba(0, 240, 255, 0.5);
+    border-radius: 10px;
+    color: #00f0ff;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+/* ===================================
+   CALCULADORA DE FINANCIAMIENTO
+=================================== */
+.calculadora {
+    padding: 40px 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.calculadora-titulo {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #a020f0;
+}
+
+.cuotas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-cuota {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(160, 32, 240, 0.2);
+    border: 2px solid rgba(160, 32, 240, 0.5);
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cuota:hover {
+    background: rgba(160, 32, 240, 0.4);
+    box-shadow: 0 0 20px rgba(160, 32, 240, 0.5);
+    transform: scale(1.05);
+}
+
+.btn-cuota.active {
+    background: linear-gradient(135deg, #a020f0, #00f0ff);
+    border-color: #00f0ff;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+}
+
+.btn-calcular {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #00f0ff, #a020f0);
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-calcular:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0, 240, 255, 0.5);
+}
+
+/* ===================================
+   RESULTADOS
+=================================== */
+.resultados {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    animation: slideUp 0.5s ease;
+}
+
+.resultados h4 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #00f0ff;
+}
+
+.resultado-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 18px;
+}
+
+.resultado-item:last-child {
+    border-bottom: none;
+}
+
+.resultado-item.total {
+    font-size: 22px;
+    color: #00f0ff;
+    padding-top: 20px;
+    margin-top: 10px;
+    border-top: 2px solid rgba(0, 240, 255, 0.3);
+}
+
+.resultado-item.cuota {
+    font-size: 24px;
+    color: #a020f0;
+    font-weight: bold;
+}
+
+/* ===================================
+   SECCIÓN DE RESEÑAS
+=================================== */
+.resenas-section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.resenas-titulo {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #00f0ff;
+}
+
+.carrusel-wrapper {
+    margin-bottom: 30px;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+.carrusel {
+    display: flex;
+    gap: 20px;
+    width: fit-content;
+}
+
+/* Animación Izquierda a Derecha */
+.carrusel-izq-der {
+    animation: scrollLeft 40s linear infinite;
+}
+
+.carrusel-izq-der:hover {
+    animation-play-state: paused;
+}
+
+/* Animación Derecha a Izquierda */
+.carrusel-der-izq {
+    animation: scrollRight 40s linear infinite;
+}
+
+.carrusel-der-izq:hover {
+    animation-play-state: paused;
+}
+
+.resena-card {
+    min-width: 350px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.resena-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+    border-color: #00f0ff;
+}
+
+.resena-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.resena-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00f0ff, #a020f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.resena-info h5 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.resena-estrellas {
+    color: #ffd700;
+    font-size: 16px;
+}
+
+.resena-comentario {
+    color: #b0b0b0;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* ===================================
+   ANIMACIONES
+=================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 768px) {
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .producto-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    #producto-nombre {
+        font-size: 24px;
+    }
+
+    .cuotas-container {
+        gap: 10px;
+    }
+
+    .btn-cuota {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .resena-card {
+        min-width: 280px;
+    }
+
+    .nav {
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+}
