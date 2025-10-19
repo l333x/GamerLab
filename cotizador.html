@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador Inteligente - Gamer Lab</title>
+    <link rel="stylesheet" href="./css/cotizador.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Gamer Lab Logo">
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <span class="nav-separator">|</span>
+                <a href="catalogo.html" class="nav-link">Catálogo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- TÍTULO PRINCIPAL -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="title">Cotizador Inteligente</h1>
+            <p class="subtitle">Calcula el costo de tu producto con financiamiento</p>
+        </div>
+    </section>
+
+    <!-- SELECTOR DE PRODUCTOS -->
+    <section class="selector-section">
+        <div class="container">
+            <label for="producto-selector" class="selector-label">Selecciona tu producto:</label>
+            <select id="producto-selector" class="producto-selector">
+                <option value="">-- Elige un producto --</option>
+                <option value="1">Teclado Mecánico RGB Pro</option>
+                <option value="2">Teclado Gamer Wireless</option>
+                <option value="3">Monitor Gaming 27'' 144Hz</option>
+                <option value="4">Monitor 4K UHD 32''</option>
+                <option value="5">PC Gamer RTX 4060</option>
+                <option value="6">PC Workstation i9</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- INFORMACIÓN DEL PRODUCTO -->
+    <section class="producto-info" id="producto-info" style="display: none;">
+        <div class="container">
+            <div class="producto-card">
+                <div class="producto-imagen">
+                    <img id="producto-img" src="" alt="Producto">
+                </div>
+                <div class="producto-detalles">
+                    <h2 id="producto-nombre">Nombre del Producto</h2>
+                    <p id="producto-descripcion">Descripción del producto</p>
+                    <div class="precio-display">
+                        <label>Precio Base:</label>
+                        <div class="precio-valor" id="precio-base">$0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE FINANCIAMIENTO -->
+    <section class="calculadora" id="calculadora" style="display: none;">
+        <div class="container">
+            <h3 class="calculadora-titulo">Opciones de Financiamiento</h3>
+            <div class="cuotas-container" id="cuotas-container">
+                <!-- Los botones de cuotas se generan dinámicamente -->
+            </div>
+            
+            <button class="btn-calcular" id="btn-calcular">Calcular Financiamiento</button>
+
+            <!-- RESULTADOS -->
+            <div class="resultados" id="resultados" style="display: none;">
+                <h4>Resumen de tu Financiamiento</h4>
+                <div class="resultado-item">
+                    <span>Precio Base:</span>
+                    <strong id="result-base">$0.00</strong>
+                </div>
+                <div class="resultado-item">
+                    <span>IVA (15%):</span>
+                    <strong id="result-iva">$0.00</strong>
+                </div>
+                <div class="resultado-item total">
+                    <span>Precio Total:</span>
+                    <strong id="result-total">$0.00</strong>
+                </div>
+                <div class="resultado-item cuota">
+                    <span>Cuota Mensual:</span>
+                    <strong id="result-cuota">$0.00/mes</strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total a Pagar:</span>
+                    <strong id="result-total-pagar">$0.00</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE RESEÑAS -->
+    <section class="resenas-section">
+        <div class="container">
+            <h3 class="resenas-titulo">Lo que dicen nuestros clientes</h3>
+        </div>
+        
+        <!-- Fila Superior: Izquierda a Derecha -->
+        <div class="carrusel-wrapper">
+            <div class="carrusel carrusel-izq-der" id="carrusel-1">
+                <!-- Las reseñas se generan dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Fila Inferior: Derecha a Izquierda -->
+        <div class="carrusel-wrapper">
+            <div class="carrusel carrusel-der-izq" id="carrusel-2">
+                <!-- Las reseñas se generan dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <script src="./js/cotizador.js"></script>
+</body>
+</html>
