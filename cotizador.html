@@ -1,127 +1,335 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizador Inteligente - Gamer Lab</title>
-    <link rel="stylesheet" href="./css/cotizador.css">
-</head>
-<body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="./images/logo.png" alt="Gamer Lab Logo">
-            </div>
-            <nav class="nav">
-                <a href="index.html" class="nav-link">Inicio</a>
-                <span class="nav-separator">|</span>
-                <a href="catalogo.html" class="nav-link">Catálogo</a>
-            </nav>
-        </div>
-    </header>
+// ===================================
+// DATOS DE PRODUCTOS
+// ===================================
+const productos = [
+  {
+    id: 1,
+    nombre: "Teclado Mecánico RGB Pro",
+    categoria: "teclado",
+    imagen: "/images/teclado1.png",
+    precio: 129.99,
+    cuotas: [3, 6, 9, 12, 18],
+    descripcion: "Teclado mecánico con switches Cherry MX, RGB personalizable, diseño ergonómico."
+  },
+  {
+    id: 2,
+    nombre: "Teclado Gamer Wireless",
+    categoria: "teclado",
+    imagen: "/images/teclado2.png",
+    precio: 89.99,
+    cuotas: [3, 6, 9, 12, 18],
+    descripcion: "Teclado inalámbrico, batería de 40 horas, retroiluminación LED."
+  },
+  {
+    id: 3,
+    nombre: "Monitor Gaming 27'' 144Hz",
+    categoria: "monitor",
+    imagen: "/images/monitor1.png",
+    precio: 349.99,
+    cuotas: [9, 12],
+    descripcion: "Monitor curvo 27 pulgadas, 144Hz, 1ms respuesta, panel VA."
+  },
+  {
+    id: 4,
+    nombre: "Monitor 4K UHD 32''",
+    categoria: "monitor",
+    imagen: "/images/monitor2.png",
+    precio: 549.99,
+    cuotas: [9, 12],
+    descripcion: "Monitor 4K, HDR10, IPS, ideal para diseño y gaming."
+  },
+  {
+    id: 5,
+    nombre: "PC Gamer RTX 4060",
+    categoria: "pc",
+    imagen: "/images/pc1.png",
+    precio: 1299.99,
+    cuotas: [6, 9, 12],
+    descripcion: "PC completa: RTX 4060, Ryzen 5 7600, 16GB RAM, SSD 1TB."
+  },
+  {
+    id: 6,
+    nombre: "PC Workstation i9",
+    categoria: "pc",
+    imagen: "/images/pc2.png",
+    precio: 2199.99,
+    cuotas: [6, 9, 12],
+    descripcion: "Estación de trabajo: Intel i9, 32GB RAM, RTX 4070, SSD 2TB."
+  }
+];
 
-    <!-- TÍTULO PRINCIPAL -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="title">Cotizador Inteligente</h1>
-            <p class="subtitle">Calcula el costo de tu producto con financiamiento</p>
-        </div>
-    </section>
+// ===================================
+// DATOS DE RESEÑAS
+// ===================================
+const resenas = [
+  {
+    nombre: "María G.",
+    inicial: "M",
+    estrellas: 5,
+    comentario: "Excelente servicio, pude ver el producto en mi escritorio antes de comprar. ¡Totalmente recomendado!"
+  },
+  {
+    nombre: "Carlos R.",
+    inicial: "C",
+    estrellas: 5,
+    comentario: "El cotizador es muy útil y preciso. Me ayudó a planificar mi compra perfectamente."
+  },
+  {
+    nombre: "Ana M.",
+    inicial: "A",
+    estrellas: 4,
+    comentario: "Muy buena experiencia. Los cálculos son claros y el proceso es sencillo."
+  },
+  {
+    nombre: "Luis P.",
+    inicial: "L",
+    estrellas: 5,
+    comentario: "Increíble herramienta. Me facilita saber cuánto pagaré mensualmente sin sorpresas."
+  },
+  {
+    nombre: "Sofia T.",
+    inicial: "S",
+    estrellas: 5,
+    comentario: "Transparente y fácil de usar. Me encanta poder calcular antes de decidir."
+  },
+  {
+    nombre: "Diego V.",
+    inicial: "D",
+    estrellas: 4,
+    comentario: "Excelente atención y el cotizador funciona de maravilla. Muy satisfecho."
+  },
+  {
+    nombre: "Patricia L.",
+    inicial: "P",
+    estrellas: 5,
+    comentario: "La mejor experiencia de compra online. Todo muy claro desde el inicio."
+  },
+  {
+    nombre: "Roberto H.",
+    inicial: "R",
+    estrellas: 5,
+    comentario: "Súper práctico y confiable. Ahora puedo planificar mis pagos sin complicaciones."
+  },
+  {
+    nombre: "Valentina S.",
+    inicial: "V",
+    estrellas: 4,
+    comentario: "Me gustó mucho poder personalizar las cuotas según mi presupuesto."
+  },
+  {
+    nombre: "Fernando N.",
+    inicial: "F",
+    estrellas: 5,
+    comentario: "Profesional y eficiente. El cotizador me dio toda la información que necesitaba."
+  }
+];
 
-    <!-- SELECTOR DE PRODUCTOS -->
-    <section class="selector-section">
-        <div class="container">
-            <label for="producto-selector" class="selector-label">Selecciona tu producto:</label>
-            <select id="producto-selector" class="producto-selector">
-                <option value="">-- Elige un producto --</option>
-                <option value="1">Teclado Mecánico RGB Pro</option>
-                <option value="2">Teclado Gamer Wireless</option>
-                <option value="3">Monitor Gaming 27'' 144Hz</option>
-                <option value="4">Monitor 4K UHD 32''</option>
-                <option value="5">PC Gamer RTX 4060</option>
-                <option value="6">PC Workstation i9</option>
-            </select>
-        </div>
-    </section>
+// ===================================
+// VARIABLES GLOBALES
+// ===================================
+let productoSeleccionado = null;
+let cuotaSeleccionada = null;
 
-    <!-- INFORMACIÓN DEL PRODUCTO -->
-    <section class="producto-info" id="producto-info" style="display: none;">
-        <div class="container">
-            <div class="producto-card">
-                <div class="producto-imagen">
-                    <img id="producto-img" src="" alt="Producto">
-                </div>
-                <div class="producto-detalles">
-                    <h2 id="producto-nombre">Nombre del Producto</h2>
-                    <p id="producto-descripcion">Descripción del producto</p>
-                    <div class="precio-display">
-                        <label>Precio Base:</label>
-                        <div class="precio-valor" id="precio-base">$0.00</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// ===================================
+// ELEMENTOS DEL DOM
+// ===================================
+const selector = document.getElementById('producto-selector');
+const productoInfo = document.getElementById('producto-info');
+const calculadora = document.getElementById('calculadora');
+const productoImg = document.getElementById('producto-img');
+const productoNombre = document.getElementById('producto-nombre');
+const productoDescripcion = document.getElementById('producto-descripcion');
+const precioBase = document.getElementById('precio-base');
+const cuotasContainer = document.getElementById('cuotas-container');
+const btnCalcular = document.getElementById('btn-calcular');
+const resultados = document.getElementById('resultados');
 
-    <!-- CALCULADORA DE FINANCIAMIENTO -->
-    <section class="calculadora" id="calculadora" style="display: none;">
-        <div class="container">
-            <h3 class="calculadora-titulo">Opciones de Financiamiento</h3>
-            <div class="cuotas-container" id="cuotas-container">
-                <!-- Los botones de cuotas se generan dinámicamente -->
-            </div>
-            
-            <button class="btn-calcular" id="btn-calcular">Calcular Financiamiento</button>
+// ===================================
+// EVENT LISTENERS
+// ===================================
 
-            <!-- RESULTADOS -->
-            <div class="resultados" id="resultados" style="display: none;">
-                <h4>Resumen de tu Financiamiento</h4>
-                <div class="resultado-item">
-                    <span>Precio Base:</span>
-                    <strong id="result-base">$0.00</strong>
-                </div>
-                <div class="resultado-item">
-                    <span>IVA (15%):</span>
-                    <strong id="result-iva">$0.00</strong>
-                </div>
-                <div class="resultado-item total">
-                    <span>Precio Total:</span>
-                    <strong id="result-total">$0.00</strong>
-                </div>
-                <div class="resultado-item cuota">
-                    <span>Cuota Mensual:</span>
-                    <strong id="result-cuota">$0.00/mes</strong>
-                </div>
-                <div class="resultado-item">
-                    <span>Total a Pagar:</span>
-                    <strong id="result-total-pagar">$0.00</strong>
-                </div>
-            </div>
-        </div>
-    </section>
+// Cuando se selecciona un producto
+selector.addEventListener('change', (e) => {
+  const productoId = parseInt(e.target.value);
+  if (productoId) {
+    cargarProducto(productoId);
+  } else {
+    ocultarSecciones();
+  }
+});
 
-    <!-- SECCIÓN DE RESEÑAS -->
-    <section class="resenas-section">
-        <div class="container">
-            <h3 class="resenas-titulo">Lo que dicen nuestros clientes</h3>
-        </div>
-        
-        <!-- Fila Superior: Izquierda a Derecha -->
-        <div class="carrusel-wrapper">
-            <div class="carrusel carrusel-izq-der" id="carrusel-1">
-                <!-- Las reseñas se generan dinámicamente -->
-            </div>
-        </div>
+// Botón calcular
+btnCalcular.addEventListener('click', calcularFinanciamiento);
 
-        <!-- Fila Inferior: Derecha a Izquierda -->
-        <div class="carrusel-wrapper">
-            <div class="carrusel carrusel-der-izq" id="carrusel-2">
-                <!-- Las reseñas se generan dinámicamente -->
-            </div>
-        </div>
-    </section>
+// ===================================
+// FUNCIONES PRINCIPALES
+// ===================================
 
-    <script src="./js/cotizador.js"></script>
-</body>
-</html>
+/**
+ * Carga la información del producto seleccionado
+ */
+function cargarProducto(id) {
+  productoSeleccionado = productos.find(p => p.id === id);
+  
+  if (!productoSeleccionado) return;
+
+  // Mostrar secciones
+  productoInfo.style.display = 'block';
+  calculadora.style.display = 'block';
+  resultados.style.display = 'none';
+
+  // Cargar información del producto
+  productoImg.src = `../images/${productoSeleccionado.imagen}`;
+  productoImg.alt = productoSeleccionado.nombre;
+  productoNombre.textContent = productoSeleccionado.nombre;
+  productoDescripcion.textContent = productoSeleccionado.descripcion;
+  precioBase.textContent = `${productoSeleccionado.precio.toFixed(2)}`;
+
+  // Generar botones de cuotas
+  generarBotonesCuotas();
+
+  // Resetear selección de cuota
+  cuotaSeleccionada = null;
+}
+
+/**
+ * Genera los botones de cuotas según el producto
+ */
+function generarBotonesCuotas() {
+  cuotasContainer.innerHTML = '';
+  
+  productoSeleccionado.cuotas.forEach(meses => {
+    const btn = document.createElement('button');
+    btn.className = 'btn-cuota';
+    btn.textContent = `${meses} meses`;
+    btn.dataset.meses = meses;
+    
+    btn.addEventListener('click', () => {
+      // Remover active de todos los botones
+      document.querySelectorAll('.btn-cuota').forEach(b => b.classList.remove('active'));
+      
+      // Agregar active al botón clickeado
+      btn.classList.add('active');
+      cuotaSeleccionada = meses;
+    });
+    
+    cuotasContainer.appendChild(btn);
+  });
+}
+
+/**
+ * Calcula el financiamiento con IVA
+ */
+function calcularFinanciamiento() {
+  // Validar que hay un producto seleccionado
+  if (!productoSeleccionado) {
+    alert('Por favor, selecciona un producto');
+    return;
+  }
+
+  // Validar que hay una cuota seleccionada
+  if (!cuotaSeleccionada) {
+    alert('Por favor, selecciona la cantidad de meses');
+    return;
+  }
+
+  // Obtener precio base del producto seleccionado
+  const precio = productoSeleccionado.precio;
+
+  // CÁLCULOS
+  const iva = precio * 0.15; // IVA del 15%
+  const precioTotal = precio + iva;
+  const cuotaMensual = precioTotal / cuotaSeleccionada;
+  const totalPagar = precioTotal; // En este caso es lo mismo
+
+  // Mostrar resultados
+  document.getElementById('result-base').textContent = `${precio.toFixed(2)}`;
+  document.getElementById('result-iva').textContent = `${iva.toFixed(2)}`;
+  document.getElementById('result-total').textContent = `${precioTotal.toFixed(2)}`;
+  document.getElementById('result-cuota').textContent = `${cuotaMensual.toFixed(2)}/mes (${cuotaSeleccionada} meses)`;
+  document.getElementById('result-total-pagar').textContent = `${totalPagar.toFixed(2)}`;
+
+  // Mostrar sección de resultados con animación
+  resultados.style.display = 'block';
+  
+  // Scroll suave hacia los resultados
+  resultados.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/**
+ * Oculta las secciones de producto y calculadora
+ */
+function ocultarSecciones() {
+  productoInfo.style.display = 'none';
+  calculadora.style.display = 'none';
+  resultados.style.display = 'none';
+}
+
+// ===================================
+// CARRUSEL DE RESEÑAS
+// ===================================
+
+/**
+ * Genera una tarjeta de reseña
+ */
+function crearReseñaCard(resena) {
+  const card = document.createElement('div');
+  card.className = 'resena-card';
+  
+  // Generar estrellas
+  const estrellas = '⭐'.repeat(resena.estrellas);
+  
+  card.innerHTML = `
+    <div class="resena-header">
+      <div class="resena-avatar">${resena.inicial}</div>
+      <div class="resena-info">
+        <h5>${resena.nombre}</h5>
+        <div class="resena-estrellas">${estrellas}</div>
+      </div>
+    </div>
+    <p class="resena-comentario">${resena.comentario}</p>
+  `;
+  
+  return card;
+}
+
+/**
+ * Inicializa los carruseles de reseñas
+ */
+function inicializarCarruseles() {
+  const carrusel1 = document.getElementById('carrusel-1');
+  const carrusel2 = document.getElementById('carrusel-2');
+
+  // Dividir reseñas: primeras 5 para fila 1, últimas 5 para fila 2
+  const resenasFila1 = resenas.slice(0, 5);
+  const resenasFila2 = resenas.slice(5, 10);
+
+  // Crear carrusel 1 (izquierda a derecha)
+  // Duplicamos las reseñas para efecto infinito
+  [...resenasFila1, ...resenasFila1].forEach(resena => {
+    carrusel1.appendChild(crearReseñaCard(resena));
+  });
+
+  // Crear carrusel 2 (derecha a izquierda)
+  [...resenasFila2, ...resenasFila2].forEach(resena => {
+    carrusel2.appendChild(crearReseñaCard(resena));
+  });
+}
+
+// ===================================
+// INICIALIZACIÓN
+// ===================================
+
+/**
+ * Inicializa la página cuando el DOM está listo
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Inicializar carruseles de reseñas
+  inicializarCarruseles();
+  
+  // Ocultar secciones al inicio
+  ocultarSecciones();
+  
+  console.log('Cotizador Inteligente - Gamer Lab');
+  console.log('Sistema listo para calcular financiamientos');
+});
